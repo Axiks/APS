@@ -23,7 +23,10 @@
         <service
             android:name=".PingService"
             android:enabled="true"
-            android:exported="true"></service>
+            android:exported="true" />
+        <service
+            android:name=".PiniService"
+            android:exported="false"></service>
     </application>
 
 </manifest>

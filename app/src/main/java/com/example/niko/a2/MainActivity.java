@@ -44,11 +44,16 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void servStart(View view){
-        startService(new Intent(this, PingService.class));
+        //startService(new Intent(this, PingService.class));
+        startService(new Intent(this, PiniService.class).putExtra("time", 3) .putExtra("label", "Call 1") );
+        startService(new Intent(this, PiniService.class).putExtra("time", 5) .putExtra("label", "Call 2") );
+        startService(new Intent(this, PiniService.class).putExtra("time", 15) .putExtra("label", "Call 3") );
+        startService(new Intent(this, PiniService.class).putExtra("time", 4) .putExtra("label", "Call 4") );
     }
 
     public void destroy(View view){
-        stopService(new Intent(this, PingService.class));
+        //stopService(new Intent(this, PingService.class));
+        stopService(new Intent(this, PiniService.class));
     }
 
     public void render(String mess){
