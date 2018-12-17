@@ -10,11 +10,13 @@ import java.util.concurrent.TimeUnit;
 public class PingService extends Service {
     MyThread thr;
     int li = 0;
+    TimeThread xhr;
 
     final String myLog = "trollo";
 
     public PingService() {
         thr = new MyThread();
+        xhr = new TimeThread();
     }
 
     @Override
@@ -28,14 +30,18 @@ public class PingService extends Service {
         Log.d(myLog, "onStartComand");
         //runn("http://google.com");
         //thr.run("http://google.com");
-        code();
+        //code();
+        xhr.start();
 
         return super.onStartCommand(intent, flags, startId);
     }
 
     @Override
     public void onDestroy() {
+
         Log.d(myLog, "onDestroyService");
+        xhr.astanawis();
+        //xhr.interrupt();
         super.onDestroy();
     }
 
