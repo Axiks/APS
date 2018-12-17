@@ -3,16 +3,14 @@ package com.example.niko.a2;
 import android.app.Service;
 import android.content.Intent;
 import android.os.IBinder;
-import android.os.StrictMode;
 import android.util.Log;
 
-import java.io.IOException;
-import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
-import java.net.URL;
+import java.util.concurrent.TimeUnit;
 
 public class PingService extends Service {
     MyThread thr;
+    int li = 0;
+
     final String myLog = "trollo";
 
     public PingService() {
@@ -29,7 +27,8 @@ public class PingService extends Service {
     public int onStartCommand(Intent intent, int flags, int startId) {
         Log.d(myLog, "onStartComand");
         //runn("http://google.com");
-        thr.run("http://google.com");
+        //thr.run("http://google.com");
+        code();
 
         return super.onStartCommand(intent, flags, startId);
     }
@@ -47,41 +46,20 @@ public class PingService extends Service {
         throw new UnsupportedOperationException("Not yet implemented");
     }
 
-    public String runn(String inUrl) {
-
-        StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
-        StrictMode.setThreadPolicy(policy);
-
-        Log.d("trollo", "Mой поток2 запущен...");
+    public void code(){
+        li++;
+        int tm = 2;
+        String label = "code bulun "+li;
+        Log.d(myLog, "onHandleIntent");
 
         try {
-            //URL url = new URL("http://googlebdbdb345.com");
-            URL url = new URL(inUrl);
-
-            HttpURLConnection urlc = (HttpURLConnection) url.openConnection();
-            urlc.setRequestProperty("User-Agent", "Android Application: 10");
-            urlc.setRequestProperty("Connection", "close");
-            urlc.setConnectTimeout(1000 * 3); // mTimeout is in seconds
-            urlc.connect();
-
-            if (urlc.getResponseCode() == 200) {
-                Log.d("trollo","getResponseCode == 200");
-                return "getResponseCode == 200";
-                //return new Boolean(true);
-            }
-            else {
-                Log.d("trollo","error conn");
-                return("error connect");
-            }
-        } catch (MalformedURLException e1) {
-            e1.printStackTrace();
-            Log.d("trollo","exep1");
-            return "exep1";
-        } catch (IOException e) {
+            TimeUnit.SECONDS.sleep(tm);
+        } catch (InterruptedException e) {
             e.printStackTrace();
-            Log.d("trollo","exep2");
-            return "exep2";
         }
+        Log.d(myLog, "onHandleIntent end " + label);
+
+        code();
     }
 
 }

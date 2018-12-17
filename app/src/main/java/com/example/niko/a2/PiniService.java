@@ -84,6 +84,8 @@ public class PiniService extends IntentService {
                 e.printStackTrace();
             }
             Log.d(myLog, "onHandleIntent end " + label);
+
+            onHandleIntent(intent);
         }
     }
 
