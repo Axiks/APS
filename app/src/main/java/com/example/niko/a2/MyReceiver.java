@@ -13,7 +13,8 @@ public class MyReceiver extends BroadcastReceiver {
         // TODO: This method is called when the BroadcastReceiver is receiving
         // an Intent broadcast.
         //throw new UnsupportedOperationException("Not yet implemented");
-        activity.servOn();
         Toast.makeText(context, "Action: " + intent.getAction(), Toast.LENGTH_SHORT).show();
+
+        //activity.servOn();
     }
 }
