@@ -14,10 +14,8 @@ class MyThread extends Thread {
         StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
         StrictMode.setThreadPolicy(policy);
 
-        Log.d("trollo", "Mой поток запущен...");
-
+        Log.d("trollo", "MyThread: Код пінгу запущений");
         try {
-            //URL url = new URL("http://googlebdbdb345.com");
             URL url = new URL(inUrl);
 
             HttpURLConnection urlc = (HttpURLConnection) url.openConnection();
@@ -28,21 +26,20 @@ class MyThread extends Thread {
 
             if (urlc.getResponseCode() == 200) {
                 Log.d("trollo","getResponseCode == 200");
-                return "getResponseCode == 200";
-                //return new Boolean(true);
-            }
+                return "getResponseCode == 200 return"; }
             else {
-                Log.d("trollo","error conn");
-                return("error connect");
+                Log.d("trollo","error connect");
+                return("Помилка коннекту");
             }
         } catch (MalformedURLException e1) {
             e1.printStackTrace();
             Log.d("trollo","exep1");
-            return "exep1";
+            return "Помилка коннекту";
         } catch (IOException e) {
             e.printStackTrace();
             Log.d("trollo","exep2");
-            return "exep2";
+            return "Помилка коннекту";
         }
+
     }
 }
