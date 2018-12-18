@@ -55,15 +55,17 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void servOn(){
-        Intent intent = new Intent(this,  MyReceiver.class);
-        PendingIntent  pi = PendingIntent.getBroadcast(this.getApplicationContext(),1,intent, 0);
+//        Intent intent = new Intent(this,  MyReceiver.class);
+//        PendingIntent  pi = PendingIntent.getBroadcast(this.getApplicationContext(),1,intent, 0);
+//
+//        AlarmManager am = (AlarmManager) getSystemService(ALARM_SERVICE);
+//        am.set(AlarmManager.RTC_WAKEUP, System.currentTimeMillis() + (7*1000), pi);
+//
+//        Toast.makeText(this, "Наставлено на 7 секунд", Toast.LENGTH_LONG).show();
 
-        AlarmManager am = (AlarmManager) getSystemService(ALARM_SERVICE);
-        am.set(AlarmManager.RTC_WAKEUP, System.currentTimeMillis() + (7*1000), pi);
 
-        Toast.makeText(this, "Наставлено на 7 секунд", Toast.LENGTH_LONG).show();
 
-        //startService(new Intent(this, PingService.class));
+        startService(new Intent(this, PingService.class));
 
         //servOn();
 //        startService(new Intent(this, PiniService.class).putExtra("time", 3) .putExtra("label", "Call 1") );
